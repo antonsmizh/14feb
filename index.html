@@ -1,0 +1,60 @@
+<div class="heart" style="left: 70%; animation-delay: 1.5s"></div>
+            </div>
+        </header>
+
+        <div class="message-box">
+            <p>Ты делаешь этот мир ярче своими улыбками, теплее своими объятиями и счастливее — просто тем, что ты есть!</p>
+            <p>Спасибо, что ты рядом, за твою доброту и нежность. Пусть этот день принесёт тебе море цветов, сладостей и самых тёплых чувств!</p>
+            <button class="button" onclick="showSurprise()">Нажми меня ❤️</button>
+        </div>
+
+        <div class="gallery">
+            <img src="https://source.unsplash.com/random/600x600/?love,flower" alt="Цветы">
+            <img src="https://source.unsplash.com/random/600x600/?chocolate" alt="Шоколад">
+            <img src="https://source.unsplash.com/random/600x600/?couple" alt="Пара">
+        </div>
+
+        <footer>
+            <p>Создано с любовью специально для тебя ❤️</p>
+        </footer>
+    </div>
+
+    <script>
+        // Создание летающих сердечек на фоне
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        // Анимация появления элементов при скролле
+        function checkVisibility() {
+            const elements = document.querySelectorAll('.message-box');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        // Всплывающее сообщение
+        function showSurprise() {
+            alert("Ты самая лучшая! Спасибо, что ты есть в моей жизни! 💖");
+        }
+
+        // Инициализация
+        window.addEventListener('load', () => {
+            createHearts();
+            checkVisibility();
+        });
+
+        window.addEventListener('scroll', checkVisibility);
+    </script>
+</body>
+</html>
